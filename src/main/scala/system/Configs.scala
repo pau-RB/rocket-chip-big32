@@ -70,6 +70,12 @@ class TinyConfig extends Config(
   new BaseConfig
 )
 
+class Big32Config extends Config(
+  new With1Big32Core ++
+  new WithCoherentBusTopology ++
+  new BaseConfig
+)
+
 class MemPortOnlyConfig extends Config(
   new WithNoMMIOPort ++
   new WithNoSlavePort ++

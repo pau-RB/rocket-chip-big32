@@ -215,6 +215,43 @@ class With1TinyCore extends Config((site, here, up) => {
   }
 })
 
+class With1Big32Core extends Config((site, here, up) => {
+  case XLen => 32
+  case SystemBusKey => SystemBusParams(
+    beatBytes  = site(CacheBlockBytes),
+    blockBytes = site(CacheBlockBytes))
+  case TilesLocated(InSubsystem) => {
+    val big32 = RocketTileParams(
+      core = RocketCoreParams(
+        useVM = false,
+        fpu = None,
+        mulDiv = Some(MulDivParams(mulUnroll = 8))),
+      btb = Some(BTBParams()),
+      dcache = Some(DCacheParams(
+        rowBits = site(SystemBusKey).beatBits,
+        nSets = 512, // 32Kb
+        nWays = 1,
+        nTLBSets = 1,
+        nTLBWays = 4,
+        nMSHRs = 0,
+        blockBytes = site(CacheBlockBytes))),
+      icache = Some(ICacheParams(
+        rowBits = site(SystemBusKey).beatBits,
+        nSets = 256, // 16KB
+        nWays = 1,
+        nTLBSets = 1,
+        nTLBWays = 4,
+        blockBytes = site(CacheBlockBytes)))
+    )
+    List(RocketTileAttachParams(
+      big32,
+      RocketCrossingParams(
+        crossingType = SynchronousCrossing(),
+        master = TileMasterPortParams())
+    ))
+  }
+})
+
 class WithNBanks(n: Int) extends Config((site, here, up) => {
   case BankedL2Key => up(BankedL2Key, site).copy(nBanks = n)
 })

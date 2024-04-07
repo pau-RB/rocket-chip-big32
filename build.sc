@@ -267,6 +267,7 @@ object emulator extends Cross[Emulator](
   ("freechips.rocketchip.system.TestHarness", "freechips.rocketchip.system.DefaultBufferlessConfig"),
   // RocketSuiteC
   ("freechips.rocketchip.system.TestHarness", "freechips.rocketchip.system.TinyConfig"),
+  ("freechips.rocketchip.system.TestHarness", "freechips.rocketchip.system.Big32Config"),
   // Unittest
   ("freechips.rocketchip.unittest.TestHarness", "freechips.rocketchip.unittest.AMBAUnitTestConfig"),
   ("freechips.rocketchip.unittest.TestHarness", "freechips.rocketchip.unittest.TLSimpleUnitTestConfig"),

@@ -71,14 +71,14 @@ case class TLMasterToSlaveTransferSizes(
 
 object TLMasterToSlaveTransferSizes {
   def unknownEmits = TLMasterToSlaveTransferSizes(
-    acquireT   = TransferSizes(1, 4096),
-    acquireB   = TransferSizes(1, 4096),
-    arithmetic = TransferSizes(1, 4096),
-    logical    = TransferSizes(1, 4096),
-    get        = TransferSizes(1, 4096),
-    putFull    = TransferSizes(1, 4096),
-    putPartial = TransferSizes(1, 4096),
-    hint       = TransferSizes(1, 4096))
+    acquireT   = TransferSizes(64,64),
+    acquireB   = TransferSizes(64,64),
+    arithmetic = TransferSizes(64,64),
+    logical    = TransferSizes(64,64),
+    get        = TransferSizes(64,64),
+    putFull    = TransferSizes(64,64),
+    putPartial = TransferSizes(64,64),
+    hint       = TransferSizes(64,64))
   def unknownSupports = TLMasterToSlaveTransferSizes()
 }
 
@@ -139,13 +139,13 @@ case class TLSlaveToMasterTransferSizes(
 
 object TLSlaveToMasterTransferSizes {
   def unknownEmits = TLSlaveToMasterTransferSizes(
-    arithmetic = TransferSizes(1, 4096),
-    logical    = TransferSizes(1, 4096),
-    get        = TransferSizes(1, 4096),
-    putFull    = TransferSizes(1, 4096),
-    putPartial = TransferSizes(1, 4096),
-    hint       = TransferSizes(1, 4096),
-    probe      = TransferSizes(1, 4096))
+    arithmetic = TransferSizes(64,64),
+    logical    = TransferSizes(64,64),
+    get        = TransferSizes(64,64),
+    putFull    = TransferSizes(64,64),
+    putPartial = TransferSizes(64,64),
+    hint       = TransferSizes(64,64),
+    probe      = TransferSizes(64,64))
   def unknownSupports = TLSlaveToMasterTransferSizes()
 }
 
