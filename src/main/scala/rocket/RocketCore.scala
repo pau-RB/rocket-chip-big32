@@ -989,7 +989,7 @@ class Rocket(tile: RocketTile)(implicit p: Parameters) extends CoreModule()(p)
     when (ll_wen && rf_waddr =/= 0.U) {
       printf ("x%d p%d 0x%x\n", rf_waddr, rf_waddr, rf_wdata)
     }
-  }
+  }/*
   else {
     when (csr.io.trace(0).valid) {
       printf("C%d: %d [%d] pc=[%x] W[r%d=%x][%d] R[r%d=%x] R[r%d=%x] inst=[%x] DASM(%x)\n",
@@ -1004,7 +1004,7 @@ class Rocket(tile: RocketTile)(implicit p: Parameters) extends CoreModule()(p)
          Mux(wb_ctrl.rxs2 || wb_ctrl.rfs2, coreMonitorBundle.rd1val, 0.U),
          coreMonitorBundle.inst, coreMonitorBundle.inst)
     }
-  }
+  }*/
 
   // CoreMonitorBundle for late latency writes
   val xrfWriteBundle = Wire(new CoreMonitorBundle(xLen, fLen))
